@@ -1,9 +1,6 @@
 
-export default function CreateProductPage() {
-  console.log("desde el servidor")
-  
+export default function page() {
   return (
-    <div>CreateProductPage</div>
-
+    <div>Create products</div>
   )
 }

@@ -13,3 +13,7 @@ export const OrderSchema = z.object({
     })
   ),
 })
+
+export const SearSchema = z.object({
+  search: z.string().trim().min(1, { message: "Debes introducir un nombre" }),
+})
