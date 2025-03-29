@@ -2,7 +2,6 @@
 
 import { SearSchema } from "@/src/schema"
 import { toast } from "react-toastify"
-import { redirect } from "next/navigation"
 import { useRouter } from "next/navigation"
 
 export default function ProductsSearchForm() {

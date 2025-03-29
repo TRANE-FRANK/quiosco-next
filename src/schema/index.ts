@@ -24,10 +24,15 @@ export const ProductSchema = z.object({
     .string() // Convertir el string a un número
     .trim() // Eliminar espacios en blanco al principio y final
     .transform((value) => parseFloat(value)) // Convertir el string a un número
+    .or(z.number().min(1, { message: "El precio es requerido" }))
     .refine((value) => value > 0, { message: "El precio es requerido" }),
 
-  categoryId: z.string()
-  .trim()
-  .transform((value) => parseInt(value)) // Convertir el string a un número
-  .refine((value) => value > 0, { message: "La categoría es requerida" }), // Validar que el valor sea mayor que 0
+  categoryId: z
+    .string()
+    .trim()
+    .transform((value) => parseInt(value)) // Convertir el string a un número
+    .or(z.number().min(1, { message: "La categoría es requerida" }))
+    .refine((value) => value > 0, { message: "La categoría es requerida" }), // Validar que el valor sea mayor que 0
+
+  image: z.string().min(1, { message: "La imagen es requerida" }),
 })
