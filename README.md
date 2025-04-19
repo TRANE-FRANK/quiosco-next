@@ -58,7 +58,7 @@ sudo -u postgres createdb -O postgres quiosco
 4. Configurar el archivo `pg_hba.conf` para permitir el acceso desde localhost:
 
 ```bash
-echo "host    all             all             127.0.0.1/32            trust" | sudo tee -a /usr/local/var/postgres/pg_hba.conf
+echo "host    all       all             127.0.0.1/32            trust" | sudo tee -a /usr/local/var/postgres/pg_hba.conf
 echo "host    all             all             ::1/128                 trust" | sudo tee -a /usr/local/var/postgres/pg_hba.conf
 ```
 
