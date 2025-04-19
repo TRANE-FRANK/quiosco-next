@@ -18,7 +18,7 @@ export default function OrdersPage() {
     revalidateOnFocus: false, // No revalidar al entrar en la página
   })
 
-  if (isLoading) return  <p className="text-center">Cargando...</p>
+  if (isLoading) return  <p className="text-center">Cargando....</p>
 
   if (data)
     return (
