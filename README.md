@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Esta es una aplicación para administrar los pedidos de un restaurante.
 
-## Getting Started
+## 🚀 Tecnologías usadas
 
-First, run the development server:
+- Next.js
+- Prisma (PostgreSQL)
+- Tailwind CSS
+- TypeScript
+- Para guardar imagenes en la base de datos, se utiliza la biblioteca `cloudinary-react`
+
+
+## 📝 Instrucciones para ejecutar el proyecto
+
+1. Clonar el repositorio
+2. Instalar las dependencias
+3. Ejecutar el servidor de desarrollo
 
 ```bash
+git clone https://github.com/fr4nk/quiosco-next.git
+cd quiosco-next
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 Instrucciones para ejecutar la aplicación en producción
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clonar el repositorio
+2. Instalar las dependencias
+3. Crear un archivo `.env.local` en la raíz del proyecto con las siguientes variables de entorno:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/quiosco
+```
 
-## Learn More
+4. Ejecutar el servidor de producción
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Instrucciones para instalar PostgreSQL
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Descargar e instalar PostgreSQL desde el sitio oficial: https://www.postgresql.org/download/
+2. Iniciar el servidor de PostgreSQL en modo de desarrollo:
 
-## Deploy on Vercel
+```bash
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Crear un usuario y una base de datos:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+sudo -u postgres createuser -P -R -S postgres
+sudo -u postgres createdb -O postgres quiosco
+```
+
+4. Configurar el archivo `pg_hba.conf` para permitir el acceso desde localhost:
+
+```bash
+echo "host    all             all             127.0.0.1/32            trust" | sudo tee -a /usr/local/var/postgres/pg_hba.conf
+echo "host    all             all             ::1/128                 trust" | sudo tee -a /usr/local/var/postgres/pg_hba.conf
+```
+
+5. Reiniciar el servidor de PostgreSQL:
+
+```bash
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log restart
+```
